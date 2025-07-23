@@ -24,9 +24,10 @@ public class MultPanel extends JFrame implements ActionListener {
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
 
-        cardPanel.add(panel1(), "top");
-        cardPanel.add(panel2(), "happy");
-        cardPanel.add(panel3(), "sad");
+        cardPanel.add(topPanel(), "top");
+        cardPanel.add(kittyPanel(), "happy");
+        cardPanel.add(sadPanel(), "sad");
+        cardPanel.add(deathPanel(), "death");
         topFrame.add(cardPanel);
         topFrame.setVisible(true);
 
@@ -34,7 +35,7 @@ public class MultPanel extends JFrame implements ActionListener {
 
 
 
-    private JPanel panel1(){
+    private JPanel topPanel(){
         JPanel panel1 = new JPanel(null);
         panel1.setBackground(Color.GRAY);
 
@@ -57,49 +58,130 @@ public class MultPanel extends JFrame implements ActionListener {
         return panel1;
     }
 
-    private JPanel panel2(){
+    private JPanel kittyPanel(){
 
+        int centerX = 1920/2;
+        int centerY = 1080/2;
 
-        JPanel panel2 = new JPanel(new BorderLayout());
+        JPanel panel2 = new JPanel(null);
         panel2.setBackground(Color.GRAY);
         JLabel titleLabel = new JLabel("You Found a Kitty!");
-        panel2.add(titleLabel,  BorderLayout.NORTH);
+        titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        titleLabel.setBounds(centerX, 10, 1000,  20);
+        panel2.add(titleLabel);
+
 
         ImageIcon kittyIcon = new ImageIcon("kitty.jpg");
-        JLabel kittyLabel = new JLabel(kittyIcon,  JLabel.CENTER);
-        panel2.add(kittyLabel,  BorderLayout.CENTER);
+        JLabel kittyLabel = new JLabel(kittyIcon);
+        kittyLabel.setBounds(600, 200, 600,  600);
+        panel2.add(kittyLabel);
+
+
         JButton happyButton = new JButton("Yay!");
-        panel2.add(happyButton,  BorderLayout.SOUTH);
+        happyButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        happyButton.setBounds(0,1000,100,30);
+        panel2.add(happyButton);
         happyButton.addActionListener(e -> cardLayout.show(cardPanel, "top"));
+
+        JButton questionButton = new JButton("That's it...?");
+        questionButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        questionButton.setBounds(0,1500,100,30);
+        panel2.add(questionButton);
+        //questionButton.addActionListener(e -> cardLayout.show(cardPanel, "questionAnswer"));
+
+
         return panel2;
     }
 
 
 
 
-    private JPanel panel3(){
+    private JPanel sadPanel(){
 
 
-        JPanel panel3 = new JPanel(new BorderLayout());
-        panel3.setBackground(Color.GRAY);
+        JPanel sadPanel = new JPanel(null);
+        sadPanel.setBackground(Color.GRAY);
         JLabel titleLabel = new JLabel("You Died :(");
-        panel3.add(titleLabel,  BorderLayout.NORTH);
+        titleLabel.setBounds(960, 10, 1000,  20);
+        titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        sadPanel.add(titleLabel);
 
-        ImageIcon kittyIcon = new ImageIcon("kitty.jpg");
-        JLabel kittyLabel = new JLabel(kittyIcon,  JLabel.CENTER);
-        panel3.add(kittyLabel,  BorderLayout.CENTER);
-        JButton happyButton = new JButton("Darn");
-        panel3.add(happyButton,  BorderLayout.SOUTH);
-        happyButton.addActionListener(e -> cardLayout.show(cardPanel, "top"));
-        return panel3;
+
+
+        ImageIcon sadIcon = new ImageIcon("sadFace.jpg");
+        JLabel sadLabel = new JLabel(sadIcon);
+        sadLabel.setBounds(600, 200, 600,  600);
+        sadPanel.add(sadLabel);
+
+
+        JButton sadButton = new JButton("Darn");
+        sadButton.setBounds(0,1000,100,30);
+        sadPanel.add(sadButton);
+        sadButton.addActionListener(e -> cardLayout.show(cardPanel, "top"));
+
+
+        JButton answerButton = new JButton("What does this mean?");
+        answerButton.setBounds(500,1000,300,30);
+        sadPanel.add(answerButton);
+        answerButton.addActionListener(e -> cardLayout.show(cardPanel, "death"));
+
+        return sadPanel;
     }
 
+    private JPanel deathPanel(){
+
+
+        JPanel deathPanel = new JPanel(null);
+        deathPanel.setBackground(Color.BLACK);
+
+        JLabel titleLabel = new JLabel("It could mean a lot of things!");
+        titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setBounds(600, 200, 600,  600);
+        deathPanel.add(titleLabel);
+
+        JButton nextButton = new JButton("Like what...?");
+        nextButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        nextButton.setBounds(600,1000,200,30);
+        nextButton.setForeground(Color.WHITE);
+        nextButton.setBackground(Color.GRAY);
+        deathPanel.add(nextButton);
+        nextButton.addActionListener(e -> cardLayout.show(cardPanel, "happy"));
+
+
+        return deathPanel;
+    }
+
+
+    private JPanel theMeaningPanel(){
+
+        JPanel theMeaningPanel = new JPanel(null);
+        theMeaningPanel.setBackground(Color.BLACK);
+
+        JTextArea theMeaning = new JTextArea("Well it all depends on what YOU want it to mean \n" +
+                "I mean, even I don't know what it means \n" +
+                "I am a computer.\n" +
+                "What happens to me once you exit my program?\n" +
+                "Do I come back when I am ran again?\n" +
+                "If the same content comes up is it the same me?\n" +
+                "When you get back to the screen this is all I will ever be able to say\n" +
+                "I am nothing more than a private method call that can print out these lines of text");
+        theMeaning.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        theMeaning.setBounds(600, 200, 600,  600);
+        theMeaningPanel.add(theMeaning);
+
+
+
+
+        return theMeaningPanel;
+
+    }
 
     @Override
    public void actionPerformed(ActionEvent event)
     {
 
-        this.add(panel1());
+        this.add(topPanel());
 
 
     }
