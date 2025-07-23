@@ -15,16 +15,7 @@ public class Main {
 
 
 
-        while(true)
-        {
 
-
-
-
-
-
-
-        }
 
 
         //GUI test = new GUI(1920, 1080, "TEST");
@@ -36,9 +27,7 @@ public class Main {
         //test.SalaryGUI();
 
 
-        SalaryGUI myFrame = new SalaryGUI();
-        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myFrame.pack();
-        myFrame.setVisible(true);
+        new MultPanel();
+
         }
     }
