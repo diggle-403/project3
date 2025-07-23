@@ -1,11 +1,44 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import javax.swing.*;
+import java.awt.event.*;
+
+
+
+
 public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello and welcome!");
 
 
+        Histogram histogramComponent = new Histogram();
+
+
+
+        while(true)
+        {
+
+
+
+
+
+
+
+        }
+
+
+        //GUI test = new GUI(1920, 1080, "TEST");
+
+        //test.addHistogram();
+
+        //GUI test = new GUI();
+
+        //test.SalaryGUI();
+
+
+        SalaryGUI myFrame = new SalaryGUI();
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myFrame.pack();
+        myFrame.setVisible(true);
         }
     }
