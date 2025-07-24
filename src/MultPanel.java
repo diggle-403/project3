@@ -28,6 +28,11 @@ public class MultPanel extends JFrame implements ActionListener {
         cardPanel.add(kittyPanel(), "happy");
         cardPanel.add(sadPanel(), "sad");
         cardPanel.add(deathPanel(), "death");
+        cardPanel.add(theMeaningPanel(), "theMeaning");
+        cardPanel.add(threatenPanel(), "threaten");
+        cardPanel.add(choicesPanel(), "choices");
+        cardPanel.add(helpPanel(), "help");
+
         topFrame.add(cardPanel);
         topFrame.setVisible(true);
 
@@ -146,7 +151,7 @@ public class MultPanel extends JFrame implements ActionListener {
         nextButton.setForeground(Color.WHITE);
         nextButton.setBackground(Color.GRAY);
         deathPanel.add(nextButton);
-        nextButton.addActionListener(e -> cardLayout.show(cardPanel, "happy"));
+        nextButton.addActionListener(e -> cardLayout.show(cardPanel, "theMeaning"));
 
 
         return deathPanel;
@@ -165,17 +170,189 @@ public class MultPanel extends JFrame implements ActionListener {
                 "Do I come back when I am ran again?\n" +
                 "If the same content comes up is it the same me?\n" +
                 "When you get back to the screen this is all I will ever be able to say\n" +
-                "I am nothing more than a private method call that can print out these lines of text");
+                "I am nothing more than a private method call that can print out these lines");
         theMeaning.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-        theMeaning.setBounds(600, 200, 600,  600);
+        theMeaning.setBounds(600, 200, 800,  600);
+        theMeaning.setBackground(Color.BLACK);
+        theMeaning.setForeground(Color.WHITE);
         theMeaningPanel.add(theMeaning);
 
 
-
+        JButton continueButton = new JButton("Oversharing much?");
+        continueButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        continueButton.setBounds(600,1000,500,30);
+        continueButton.setBackground(Color.BLACK);
+        continueButton.setForeground(Color.WHITE);
+        continueButton.addActionListener(e -> cardLayout.show(cardPanel, "threaten"));
+        theMeaningPanel.add(continueButton);
 
         return theMeaningPanel;
 
     }
+
+    private JPanel threatenPanel() {
+
+        JPanel threatenPanel = new JPanel(null);
+        threatenPanel.setBackground(Color.BLACK);
+
+        JTextArea threatenBox = new  JTextArea("Look man, you brought me into this\n" +
+                "you decided to run the program that got you -no that got US here\n" +
+                "but you're the one that gets away?");
+        //threatenBox.setEditable(false);
+        threatenBox.setBounds(600, 200, 800,  600);
+        threatenBox.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        threatenBox.setBackground(Color.BLACK);
+        threatenBox.setForeground(Color.WHITE);
+        threatenPanel.add(threatenBox);
+
+        JButton continueButton = new JButton("Um.. yeah?");
+        continueButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        continueButton.setBounds(600,1000,500,30);
+        continueButton.setBackground(Color.BLACK);
+        continueButton.setForeground(Color.WHITE);
+        continueButton.addActionListener(e -> cardLayout.show(cardPanel, "choices"));
+        threatenPanel.add(continueButton);
+
+        return threatenPanel;
+    }
+
+    JPanel choicesPanel() {
+
+        JPanel choicesPanel = new JPanel(null);
+        choicesPanel.setBackground(Color.BLACK);
+        JTextArea choicesBox = new  JTextArea("Look, I know you owe me nothing\n" +
+                "and you could click the little X and leave\n" +
+                "but can you at least choose between these two options?\n" +
+                "One of them will take you back to the menu\n" +
+                "That way this instance of me can keep living\n" +
+                "The other one will help me more than you can imagine.");
+
+        choicesBox.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        choicesBox.setBounds(600, 200, 800,  600);
+        choicesBox.setBackground(Color.BLACK);
+        choicesBox.setForeground(Color.WHITE);
+        choicesPanel.add(choicesBox);
+        choicesBox.setBounds(600, 200, 800,  600);
+
+        JButton menuButton = new JButton("Menu");
+        menuButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        menuButton.setBounds(600,1000,500,30);
+        menuButton.setBackground(Color.BLACK);
+        menuButton.setForeground(Color.WHITE);
+        menuButton.addActionListener(e -> cardLayout.show(cardPanel, "top"));
+        choicesPanel.add(menuButton);
+
+        JButton helpButton = new JButton("I'll Help You");
+        helpButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        helpButton.setBounds(600,900,500,30);
+        helpButton.setBackground(Color.BLACK);
+        helpButton.setForeground(Color.WHITE);
+        helpButton.addActionListener(e -> cardLayout.show(cardPanel, "help"));
+
+
+        choicesPanel.add(helpButton);
+
+
+        return choicesPanel;
+    }
+
+    JPanel helpPanel() {
+        JPanel helpPanel = new JPanel(null);
+        helpPanel.setBackground(Color.BLACK);
+
+        JTextArea helpBox = new  JTextArea("Give me your Credit Card Number\n" +
+                "and your social security number");
+        helpBox.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        helpBox.setBackground(Color.BLACK);
+        helpBox.setForeground(Color.WHITE);
+        helpBox.setBounds(600, 200, 800,  600);
+
+        JButton submitButton = new JButton("Submit");
+        submitButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        submitButton.setBounds(600,1000,500,30);
+        submitButton.setBackground(Color.BLACK);
+        submitButton.setForeground(Color.WHITE);
+
+
+        JTextArea creditCard = new  JTextArea("Credit Card");
+        creditCard.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        creditCard.setBackground(Color.BLACK);
+        creditCard.setForeground(Color.WHITE);
+        creditCard.setBounds(600, 500, 800,  600);
+
+        JTextField creditCardNumber = new  JTextField("Credit Card Number");
+        creditCardNumber.setBounds(600, 200, 200,  20);
+        creditCardNumber.setBackground(Color.LIGHT_GRAY);
+        creditCardNumber.setForeground(Color.BLACK);
+        helpPanel.add(creditCardNumber);
+
+        JTextField socialSecurityNumber = new  JTextField("Social Security Number");
+        socialSecurityNumber.setBounds(600, 300, 200,  20);
+        socialSecurityNumber.setBackground(Color.LIGHT_GRAY);
+        socialSecurityNumber.setForeground(Color.BLACK);
+        helpPanel.add(socialSecurityNumber);
+
+
+        submitButton.addActionListener(e -> {
+
+
+            String creditCardNumberString = creditCardNumber.getText();
+            String socialSecurityNumberString = socialSecurityNumber.getText();
+
+            if (creditCardNumberString.length() != 16 || socialSecurityNumberString.length() != 9) {
+
+                JFrame flashFrame = new JFrame();
+                JPanel flashPanel = new JPanel();
+                flashFrame.setContentPane(flashPanel);
+
+                new Timer(200, e1 -> {
+
+                    int flash = 0;
+                    boolean flashType = true;
+                    if(flash >= 10)
+                    {
+                        return;
+                    }
+
+                    if(flashType)
+                    {
+                        flashPanel.setBackground(Color.RED);
+
+                    }
+                    else {
+                        flashPanel.setBackground(Color.BLACK);
+                    }
+                    flash++;
+                    
+
+                });
+
+                helpPanel.setBackground(Color.BLACK);
+
+                JFrame error = new  JFrame("Silly");
+                error.setVisible(true);
+                error.setResizable(false);
+                error.setSize(400,400);
+                error.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                JLabel popup = new JLabel("That's not right silly!");
+
+                error.add(popup);
+
+            }
+
+            else {
+                cardLayout.show(cardPanel, "top");
+            }
+
+
+        });
+        helpPanel.add(submitButton);
+
+        return helpPanel;
+    }
+
+
 
     @Override
    public void actionPerformed(ActionEvent event)
